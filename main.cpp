@@ -31,20 +31,22 @@ int main(int argc, char *argv[])
 
     try
     {
-        // Step 1: Read the type file
+        // Baca file
         std::string fileContent = readFile(filename);
 
-        // Step 2: Create a lexer and tokenize the input
+        // Buat ngambil token
         Lexer lexer(fileContent);
 
-        // Step 3: Create a parser and parse the tokens
+        // Buat ngubah token jadi statements
         Parser parser(lexer);
-        Program program;
-        program.statements = parser.GetStatements(); // Assuming parse() returns a Program object
 
-        // Step 4: Create an interpreter and execute the program
+        // Program literally cuman vector yang berisi statements
+        Program program;
+        program.statements = parser.GetStatements();
+
+        // Interpret program
         Interpreter interpreter;
-        interpreter.ExecuteProgram(program); // Assuming execute() takes a Program object
+        interpreter.ExecuteProgram(program);
     }
     catch (const std::exception &e)
     {
